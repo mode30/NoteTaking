@@ -2,9 +2,13 @@ package note
 
 import (
 	// "fmt"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"log"
 	"noteTaking/userInput"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -45,5 +49,19 @@ func (note *NoteTaking)displayNote()(string,error){
 
 	return fmt.Sprintf("information output:\n %s,%s,%s",note.title,note.content,note.createdAt.Format(time.RFC3339)),nil
 
+
+}
+
+
+func (note *NoteTaking)Save()(err error){
+	fileNote:=strings.ReplaceAll(note.title, "", "_")
+	fileNote=strings.ToLower(fileNote)
+	json,err:=json.Marshal(note)
+	if err!=nil{
+		// fmt.Println(err)
+		// log.Fatal(err)
+		return err
+	}
+	return os.WriteFile(fileNote, json, 0644)
 
 }
