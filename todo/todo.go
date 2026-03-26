@@ -20,21 +20,6 @@ type Todo struct{
 
 
 func NewTodo( todo  string)(todoContent *Todo,err error){
-	// todo.title,err=userInput.GetUserINput("enter title:")
-	// if err !=nil{
-	// 	fmt.Println(err)
-	// 	return
-
-	// }
-	// todo,err=userInput.GetUserINput("enter content")
-	// if err !=nil{
-	// 	fmt.Println(err)
-	// 	return
-
-	// }
-	// if todo.title ==""|| note.content==""{
-	// 	return todo,errors.New("must have title and content filled")
-	// }
 	return &Todo{
 		// title:todo.title,
 		content:todo,
@@ -44,9 +29,11 @@ func NewTodo( todo  string)(todoContent *Todo,err error){
 }
 
 
-func (todo *Todo)DisplayNote()(string,error){
+func (todo *Todo)Display()(string){
 
-	return fmt.Sprintf("information output:\n %s",todo.content),nil
+	// return fmt.Sprintf("information output:\n %s",todo.content),nil
+	result:=fmt.Sprintf("information output:\n %s",todo.content)
+	return result
 
 
 }

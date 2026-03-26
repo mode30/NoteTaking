@@ -45,9 +45,9 @@ func NewNote(note *NoteTaking)(noteContent *NoteTaking,err error){
 }
 
 
-func (note *NoteTaking)DisplayNote()(string,error){
+func (note *NoteTaking)Display()(string){
 
-	return fmt.Sprintf("information output:\n %s,%s,%s",note.title,note.content,note.createdAt.Format(time.RFC3339)),nil
+	return fmt.Sprintf("information output:\n %s,%s,%s",note.title,note.content,note.createdAt.Format(time.RFC3339))
 
 
 }
