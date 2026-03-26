@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"log"
+	// "log"
 	"noteTaking/userInput"
 	"os"
 	"strings"
@@ -55,7 +55,7 @@ func (note *NoteTaking)displayNote()(string,error){
 
 func (note *NoteTaking)Save()(err error){
 	fileNote:=strings.ReplaceAll(note.title, "", "_")
-	fileNote=strings.ToLower(fileNote)
+	fileNote=strings.ToLower(fileNote) + ".json"
 	json,err:=json.Marshal(note)
 	if err!=nil{
 		// fmt.Println(err)
