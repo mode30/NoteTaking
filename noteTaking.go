@@ -18,6 +18,19 @@ import (
 
 func main(){
 
+	// var todo1 *todo.Todo
+	// var todo1 *todo.Todo
+	// var todo1 todo.Todo
+	// todo1:=&todo.Todo{
+
+	// }
+	todo1,err:=userInput.GetUserINput("enter todo:")
+	if err !=nil{
+		fmt.Println(err)
+		return
+	}
+	todo.NewTodo(todo1)
+
 	title,content,err:=getNoteData()
 	if err !=nil{
 		fmt.Println(err)

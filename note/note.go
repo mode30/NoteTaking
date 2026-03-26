@@ -20,7 +20,7 @@ type NoteTaking struct{
 }
 
 
-func newNote(note *NoteTaking)(noteContent *NoteTaking,err error){
+func NewNote(note *NoteTaking)(noteContent *NoteTaking,err error){
 	note.title,err=userInput.GetUserINput("enter title:")
 	if err !=nil{
 		fmt.Println(err)
@@ -45,7 +45,7 @@ func newNote(note *NoteTaking)(noteContent *NoteTaking,err error){
 }
 
 
-func (note *NoteTaking)displayNote()(string,error){
+func (note *NoteTaking)DisplayNote()(string,error){
 
 	return fmt.Sprintf("information output:\n %s,%s,%s",note.title,note.content,note.createdAt.Format(time.RFC3339)),nil
 
