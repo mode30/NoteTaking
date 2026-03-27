@@ -8,11 +8,12 @@ import (
 	// "encoding/json"
 	// "errors"
 	"fmt"
+	"go/types"
 	// "os"
 	// "strings"
 	// "noteTaking/note/"
-	"noteTaking/userInput"
 	"noteTaking/todo"
+	"noteTaking/userInput"
 	// "time"
 )
 
@@ -124,7 +125,40 @@ func DisplaySave(data outputtable){
 }
 
 
+func addNumber(a,b any){
+	var sumValue1 int
+	var sumValue2 int
+	aIntValue,ok:=a.(int)
+	if ok{
+		aValue:=fmt.Sprintln("%f",aIntValue)
+		sumValue1=aValue
+
+	}
+	bIntValue,ok:=b.(int)
+	if ok{
+		bValue:=fmt.Sprintln(bIntValue)
+		sumValue2=bValue
+
+	}
+	result:=sumValue1+sumValue2
+}
 func printSomething(value any){
-	fmt.Println(value)
+	float64Value,ok:=value.(float64)
+	if !ok{
+		intValue,ok:=value.(int)
+		if !ok{
+
+		}
+		fmt.Printf("int value:%d",intValue)
+	}
+	fmt.Printf("float64 %0.2f:",float64Value+1)
+	// switch value.(type){
+		// case int:
+		// fmt.Println(value)
+		// case float64:
+		// fmt.Println("float64",value)
+		// // fmt.Printf("%.2f",float64(value) *2)
+	// }
+	// fmt.Println(value)
 
 }
