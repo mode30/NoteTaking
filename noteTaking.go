@@ -32,6 +32,8 @@ type outputtable interface{
 	Display()
 }
 func main(){
+	returnedValue:=returnGenericType(1,2)
+	fmt.Println("return value:",returnedValue)
 
 	printSomething("hello")
 
@@ -125,22 +127,26 @@ func DisplaySave(data outputtable){
 }
 
 
-func addNumber(a,b any){
-	var sumValue1 int
-	var sumValue2 int
-	aIntValue,ok:=a.(int)
-	if ok{
-		aValue:=fmt.Sprintln("%f",aIntValue)
-		sumValue1=aValue
+func returnGenericType[T  string|float64|int ](a,b T)(T){
+	return a+b
 
-	}
-	bIntValue,ok:=b.(int)
-	if ok{
-		bValue:=fmt.Sprintln(bIntValue)
-		sumValue2=bValue
+}
+func addNumber(a,b any)(result any,err error){
+	aIntValue,isAInta:=a.(int)
+	bIntValue,isBIntb:=a.(int)
 
+	if isAInta && isBIntb{
+		return aIntValue + bIntValue,nil
 	}
-	result:=sumValue1+sumValue2
+
+
+	aFloat64Value,isAFloat64a:=a.(int)
+	bFloat64Value,isBFloat64b:=a.(int)
+
+	if isAFloat64a && isBFloat64b{
+		return aFloat64Value + bFloat64Value,nil
+	}
+	return
 }
 func printSomething(value any){
 	float64Value,ok:=value.(float64)
